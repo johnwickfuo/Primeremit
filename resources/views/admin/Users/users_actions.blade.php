@@ -629,7 +629,7 @@
                     </div>
 
                      <div class="form-group">
-                        <h6 class="text-{{ $text }}">Account Limit ({{$settings->currency}}) </h6>
+                        <h6 class="text-{{ $text }}">Account Limit ({{$user->currency_symbol}}) </h6>
                         <input type="number" class="form-control  text-{{ $text }}"
                             name="limit" value='{{ $user->limit }}' required>
                     </div>
@@ -791,7 +791,7 @@
                  <button type="button" class="close " data-dismiss="modal">&times;</button>
              </div>
              <div class="modal-body ">
-                 <p class="">You are clearing account for {{ $user->name }} to {{ $settings->currency }}0.00
+                 <p class="">You are clearing account for {{ $user->name }} to {{ $user->currency_symbol }}0.00
                  </p>
                  <a class="btn " href="{{ url('admin/dashboard/clearacct') }}/{{ $user->id }}">Proceed</a>
              </div>

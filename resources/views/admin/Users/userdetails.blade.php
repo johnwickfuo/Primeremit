@@ -129,11 +129,11 @@ if (Auth('admin')->User()->dashboard_style == 'light') {
                                 <div class="p-3 mt-4 border rounded row ">
                                     <div class="col-md-3">
                                         <h5 class="text-bold">Account Balance</h5>
-                                        <p>{{ $settings->currency }}{{ number_format($user->account_bal) }}</p>
+                                        <p>{{ $user->currency_symbol }}{{ number_format($user->account_bal) }}</p>
                                     </div>
                                     <div class="col-md-3">
                                         <h5>Account Limit</h5>
-                                        <p>{{ $settings->currency }}{{ number_format($user->limit) }} </p>
+                                        <p>{{ $user->currency_symbol }}{{ number_format($user->limit) }} </p>
                                     </div>
 
 

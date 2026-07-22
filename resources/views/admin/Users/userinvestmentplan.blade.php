@@ -45,7 +45,7 @@ if (Auth('admin')->User()->dashboard_style == 'light') {
                                             <tr>
                                                 {{-- <td>{{$plan->duser->name}}</td> --}}
                                                 <td>{{ $plan->planDetails->name }}</td>
-                                                <td>{{ $settings->currency }}{{ number_format($plan->amount) }}</td>
+                                                <td>{{ $user->currency_symbol }}{{ number_format($plan->amount) }}</td>
                                                 <td>
                                                     @if ($plan->active == 'yes')
                                                         <span class="badge badge-success">{{ $plan->active }}</span>
