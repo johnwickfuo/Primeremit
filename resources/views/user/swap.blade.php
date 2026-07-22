@@ -6,7 +6,7 @@
     <div class="content w-full max-w-4xl mx-auto">
         <div class="page-inner">
             <div class="mt-2 mb-6 text-center">
-                <h1 class="text-3xl font-extrabold text-gray-900 leading-tight">Swap {{ $settings->currency }} to Bitcoin (BTC)</h1>
+                <h1 class="text-3xl font-extrabold text-gray-900 leading-tight">Swap {{ Auth::user()->currency_symbol }} to Bitcoin (BTC)</h1>
                 <p class="text-gray-600 mt-2">Convert your fiat currency to Bitcoin instantly.</p>
             </div>
 
@@ -45,15 +45,15 @@
                             <form action="{{ route('process-swap') }}" method="POST">
                                 @csrf
                                 <div class="mb-6">
-                                    <label for="fiat_amount" class="block text-sm font-semibold text-gray-700 mb-2">Amount to Swap ({{ $settings->currency }})</label>
+                                    <label for="fiat_amount" class="block text-sm font-semibold text-gray-700 mb-2">Amount to Swap ({{ Auth::user()->currency_symbol }})</label>
                                     <input type="number" step="0.01" name="fiat_amount" id="fiat_amount" class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 transition duration-200 ease-in-out placeholder-gray-400" placeholder="e.g., 100.00" required min="0.01" max="{{ $user->account_bal ?? 0 }}">
-                                    <p class="mt-2 text-sm text-gray-500">Your current {{ $settings->currency }} Balance: <span class="font-bold text-blue-600">{{ $settings->currency }}{{ number_format($user->account_bal ?? 0, 2, '.', ',') }}</span></p>
+                                    <p class="mt-2 text-sm text-gray-500">Your current {{ Auth::user()->currency_symbol }} Balance: <span class="font-bold text-blue-600">{{ Auth::user()->currency_symbol }}{{ number_format($user->account_bal ?? 0, 2, '.', ',') }}</span></p>
                                 </div>
 
                                 <div class="mb-8">
                                     <label for="btc_equivalent" class="block text-sm font-semibold text-gray-700 mb-2">Estimated BTC Equivalent</label>
                                     <input type="text" id="btc_equivalent" class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm bg-gray-100 cursor-not-allowed placeholder-gray-400" readonly value="0.00000000" placeholder="Calculated automatically">
-                                    <p class="mt-2 text-sm text-gray-500">Current Swap Rate: 1 BTC = <span class="font-bold text-green-600">{{ $settings->currency }}{{ number_format($settings->btc_swap_rate ?? 0, 2, '.', ',') }}</span></p>
+                                    <p class="mt-2 text-sm text-gray-500">Current Swap Rate: 1 BTC = <span class="font-bold text-green-600">{{ Auth::user()->currency_symbol }}{{ number_format($settings->btc_swap_rate ?? 0, 2, '.', ',') }}</span></p>
                                 </div>
 
                                 <div class="flex justify-end">

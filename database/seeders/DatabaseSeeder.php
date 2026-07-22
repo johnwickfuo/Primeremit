@@ -13,6 +13,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+         $this->call(CurrencySeeder::class);
          \App\Models\Adverts::factory(7)->create();
     }
 }

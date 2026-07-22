@@ -1,6 +1,11 @@
 @extends('layouts.guest2')
 
 @section('title', 'Create an Account')
+
+@php
+    $currencies = \App\Models\Currency::orderBy('name')->get();
+@endphp
+
 @section('content')
 
 <div class="flex flex-col lg:flex-row min-h-screen">
@@ -103,6 +108,7 @@
                     phone: '',
                     country: '',
                     accounttype: '',
+                    currency: '{{ old('currency', 'USD') }}',
                     pin: '',
                     password: '',
                     password_confirmation: '',
@@ -129,7 +135,7 @@
                     } else if (this.step === 2) {
                         return this.formData.email && this.formData.phone && this.formData.country;
                     } else if (this.step === 3) {
-                        return this.formData.accounttype && this.formData.pin;
+                        return this.formData.accounttype && this.formData.currency && this.formData.pin;
                     } else if (this.step === 4) {
                         return this.formData.password && this.formData.password_confirmation && this.formData.terms;
                     }
@@ -415,6 +421,34 @@
                                     </div>
                                 </div>
                                 
+                                <!-- Account Currency -->
+                                <div>
+                                    <label for="currency" class="block text-sm font-medium text-gray-700 mb-2">Account Currency *</label>
+                                    <div class="relative">
+                                        <div class="absolute inset-y-0 left-0 flex items-center pl-3">
+                                            <i data-lucide="wallet" class="h-5 w-5 text-gray-400"></i>
+                                        </div>
+                                        <select
+                                            id="currency"
+                                            name="currency"
+                                            x-model="formData.currency"
+                                            class="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500 appearance-none"
+                                            required>
+                                            <option value="" disabled>Select your account currency</option>
+                                            @foreach ($currencies as $currency)
+                                                <option value="{{ $currency->code }}">{{ $currency->code }} - {{ $currency->name }} ({{ $currency->symbol }})</option>
+                                            @endforeach
+                                        </select>
+                                        <div class="absolute inset-y-0 right-0 flex items-center pr-3">
+                                            <i data-lucide="chevron-down" class="h-5 w-5 text-gray-400"></i>
+                                        </div>
+                                    </div>
+                                    <p class="mt-1 text-xs text-gray-500">All balances on your account will be displayed in this currency.</p>
+                                    @if ($errors->has('currency'))
+                                        <p class="mt-1 text-sm text-red-600">{{ $errors->first('currency') }}</p>
+                                    @endif
+                                </div>
+
                                 <!-- Transaction PIN -->
                                 <div>
                                     <label for="pin" class="block text-sm font-medium text-gray-700 mb-2">Transaction PIN (4 digits) *</label>
@@ -646,6 +680,7 @@
                         <input type="hidden" name="phone" :value="formData.phone">
                         <input type="hidden" name="country" :value="formData.country">
                         <input type="hidden" name="accounttype" :value="formData.accounttype">
+                        <input type="hidden" name="currency" :value="formData.currency">
                         <input type="hidden" name="pin" :value="formData.pin">
                         <input type="hidden" name="password" :value="formData.password">
                         <input type="hidden" name="password_confirmation" :value="formData.password_confirmation">

@@ -357,7 +357,7 @@
                                     </label>
                                     <div class="relative">
                                         <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                                            <span class="text-gray-500">{{ $settings->currency }}</span>
+                                            <span class="text-gray-500">{{ Auth::user()->currency_symbol }}</span>
                                         </div>
                                         <input 
                                             type="text" 
@@ -490,11 +490,11 @@
                                         class="block w-full pl-10 pr-10 py-3 border border-gray-200 rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all appearance-none"
                                         required
                                     >
-                                        <option value="2,000-5,000">{{ $settings->currency }}2,000 - {{ $settings->currency }}5,000</option>
-                                        <option value="6,000-10,000">{{ $settings->currency }}6,000 - {{ $settings->currency }}10,000</option>
-                                        <option value="11,000-20,000">{{ $settings->currency }}11,000 - {{ $settings->currency }}20,000</option>
-                                        <option value="21,000-50,000">{{ $settings->currency }}21,000 - {{ $settings->currency }}50,000</option>
-                                        <option value="100,000 and above">{{ $settings->currency }}100,000 and above</option>
+                                        <option value="2,000-5,000">{{ Auth::user()->currency_symbol }}2,000 - {{ Auth::user()->currency_symbol }}5,000</option>
+                                        <option value="6,000-10,000">{{ Auth::user()->currency_symbol }}6,000 - {{ Auth::user()->currency_symbol }}10,000</option>
+                                        <option value="11,000-20,000">{{ Auth::user()->currency_symbol }}11,000 - {{ Auth::user()->currency_symbol }}20,000</option>
+                                        <option value="21,000-50,000">{{ Auth::user()->currency_symbol }}21,000 - {{ Auth::user()->currency_symbol }}50,000</option>
+                                        <option value="100,000 and above">{{ Auth::user()->currency_symbol }}100,000 and above</option>
                                     </select>
                                     <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
                                         <i data-lucide="chevron-down" class="h-5 w-5 text-gray-400"></i>

@@ -30,7 +30,7 @@
                 <a href="#" class="shadow btn btn-sm btn-white btn-icon rounded-pill hover-translate-y-n3">
                     <span class="btn-inner--icon"><i class="far fa-coins"></i></span>
                     <span
-                        class="btn-inner--text">{{ $settings->currency }}{{ number_format(Auth::user()->account_bal, 2, '.', ',') }}</span>
+                        class="btn-inner--text">{{ Auth::user()->currency_symbol }}{{ number_format(Auth::user()->account_bal, 2, '.', ',') }}</span>
                 </a>
             </div>
         </div>

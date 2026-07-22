@@ -62,7 +62,7 @@
                                         <div class="d-flex align-items-center justify-content-between">
 
                                             <h3 class="font-weight-bolder text-danger">
-                                                {{ !$item->course->amount ? 'Free' : $settings->currency . number_format(intval($item->course->amount)) }}
+                                                {{ !$item->course->amount ? 'Free' : Auth::user()->currency_symbol . number_format(intval($item->course->amount)) }}
                                             </h3>
                                             <a href="{{ route('user.course.details', ['course' => str_replace(' ', '-', $item->course->course_title), 'id' => $item->course->id]) }}"
                                                 class="btn btn-sm btn-outline-primary">Get</a>

@@ -64,7 +64,7 @@
                 </div>
                 <div class="ml-5">
                     <p class="text-sm font-medium text-gray-500 truncate">Total Card Balance</p>
-                    <h3 class="text-lg font-semibold text-gray-900">{{ $settings->currency }} {{ number_format($totalBalance, 2) }}</h3>
+                    <h3 class="text-lg font-semibold text-gray-900">{{ Auth::user()->currency_symbol }} {{ number_format($totalBalance, 2) }}</h3>
                 </div>
             </div>
         </div>

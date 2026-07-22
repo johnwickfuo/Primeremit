@@ -26,8 +26,8 @@
           </div>
 
           <ul class="text-sm text-gray-600 space-y-1">
-            <li><strong>Minimum Investment:</strong> {{$settings->currency}}{{$plan->min_price}}</li>
-            <li><strong>Maximum Investment:</strong> {{$settings->currency}}{{$plan->max_price}}</li>
+            <li><strong>Minimum Investment:</strong> {{Auth::user()->currency_symbol}}{{$plan->min_price}}</li>
+            <li><strong>Maximum Investment:</strong> {{Auth::user()->currency_symbol}}{{$plan->max_price}}</li>
             <li><strong>Expected Return:</strong> {{$plan->increment_amount}}% for {{$plan->increment_interval}}</li>
             <li><strong>Duration:</strong> {{$plan->expiration}}</li>
           </ul>
@@ -39,7 +39,7 @@
                    min="{{$plan->min_price}}"
                    max="{{$plan->max_price}}"
                    x-model="amount"
-                   placeholder="{{$settings->currency}}{{$plan->min_price}} -{{$settings->currency}}{{$plan->max_price}}"
+                   placeholder="{{Auth::user()->currency_symbol}}{{$plan->min_price}} -{{Auth::user()->currency_symbol}}{{$plan->max_price}}"
                    class="w-full border rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500" required>
 
             <input type="hidden" name="id" value="{{$plan->id}}">

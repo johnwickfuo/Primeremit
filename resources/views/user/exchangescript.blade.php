@@ -133,7 +133,7 @@
                 url: "{{url('dashboard/balances/')}}" + '/' + coin,
                 type: 'GET',
                 success: function(response) {
-                    element.textContent  = "{{$settings->currency}}" + response.data;
+                    element.textContent  = "{{Auth::user()->currency_symbol}}" + response.data;
                 },
                 error: function(error) {
                     console.log(error);

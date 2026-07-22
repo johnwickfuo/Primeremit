@@ -41,7 +41,7 @@
                                             <div class="">
                                                 <h6 class="text-black h6">{{ $plan->dplan->name }}</h6>
                                                 <p class="text-muted">Amount - <span
-                                                        class="amount">{{ $settings->currency }}{{ number_format($plan->amount) }}</span>
+                                                        class="amount">{{ Auth::user()->currency_symbol }}{{ number_format($plan->amount) }}</span>
                                                 </p>
                                             </div>
                                         </div>

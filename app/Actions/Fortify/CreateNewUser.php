@@ -34,6 +34,7 @@ class CreateNewUser implements CreatesNewUsers
                 'name' => ['required', 'string', 'max:255'],
                 'username' => ['required', 'unique:users,username'],
                 'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+                'currency' => ['required', 'string', 'exists:currencies,code'],
                 'password' => $this->passwordRules(),
                 'g-recaptcha-response' => 'required|captcha',
                 'terms' => Jetstream::hasTermsAndPrivacyPolicyFeature() ? ['required', 'accepted'] : '',
@@ -43,6 +44,7 @@ class CreateNewUser implements CreatesNewUsers
                 'name' => ['required', 'string', 'max:255'],
                 'username' => ['required', 'unique:users,username'],
                 'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+                'currency' => ['required', 'string', 'exists:currencies,code'],
                 'password' => $this->passwordRules(),
                 'terms' => Jetstream::hasTermsAndPrivacyPolicyFeature() ? ['required', 'accepted'] : '',
             ])->validate();
@@ -70,6 +72,7 @@ class CreateNewUser implements CreatesNewUsers
             'phone' => $input['phone'],
             'username' => $input['username'],
             'country' => $input['country'],
+            'currency' => strtoupper($input['currency']),
             'accounttype' => $input['accounttype'],
             'pin'=> $input['pin'],
             'ref_by' => $ref_by_id,

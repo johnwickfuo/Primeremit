@@ -27,7 +27,7 @@
                 </select>
             </div>
             <div class="form-group mb-2 text-left">
-                <label for="">Amount ({{ $settings->currency }})</label>
+                <label for="">Amount ({{ Auth::user()->currency_symbol }})</label>
                 <input type="number" wire:model='amount' class="form-control" id="" readonly>
                 <small>Amount will be deducted from your account balance.</small>
             </div>

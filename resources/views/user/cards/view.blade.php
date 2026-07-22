@@ -399,7 +399,7 @@
     @if($card->status == 'active')
         <div class="bg-gray-50 p-4 rounded-lg border border-gray-100 transition-all duration-200 hover:shadow-md">
             <div class="text-xs font-medium text-gray-500 uppercase mb-1">Current Balance</div>
-            <div class="text-lg text-gray-800">{{ $settings->currency }}{{ number_format($card->balance, 2) }}</div>
+            <div class="text-lg text-gray-800">{{ Auth::user()->currency_symbol }}{{ number_format($card->balance, 2) }}</div>
         </div>
     @endif
 </div>
@@ -420,11 +420,11 @@
                 <div class="space-y-2">
                     <div class="flex justify-between items-center">
                         <span class="text-sm text-gray-600">Daily Limit:</span>
-                        <span class="text-sm font-medium text-gray-900">{{ $settings->currency }}{{ number_format($card->daily_limit ?? 5000, 2) }}</span>
+                        <span class="text-sm font-medium text-gray-900">{{ Auth::user()->currency_symbol }}{{ number_format($card->daily_limit ?? 5000, 2) }}</span>
                     </div>
                     <div class="flex justify-between items-center">
                         <span class="text-sm text-gray-600">Monthly Limit:</span>
-                        <span class="text-sm font-medium text-gray-900">{{ $settings->currency }}{{ number_format($card->monthly_limit ?? 20000, 2) }}</span>
+                        <span class="text-sm font-medium text-gray-900">{{ Auth::user()->currency_symbol }}{{ number_format($card->monthly_limit ?? 20000, 2) }}</span>
                     </div>
                     <div class="flex justify-between items-center">
                         <span class="text-sm text-gray-600">Issued Date:</span>

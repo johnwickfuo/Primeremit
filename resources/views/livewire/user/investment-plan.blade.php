@@ -20,7 +20,7 @@
                                     </div>
                                     <div class="text-left">
                                         <p class="font-medium text-sm">{{ $plan->name }}</p>
-                                        <p class="text-xs opacity-80">{{ $settings->currency }}{{ number_format($plan->min_price) }}+</p>
+                                        <p class="text-xs opacity-80">{{ Auth::user()->currency_symbol }}{{ number_format($plan->min_price) }}+</p>
                                     </div>
                                 </div>
                                 <!-- Selected indicator dot -->
@@ -40,7 +40,7 @@
                             <p class="text-sm dark:text-gray-400 text-gray-600 mt-1">
                                 {{ $planSelected->expiration }} plan with
                                 @if ($planSelected->increment_type == 'Fixed')
-                                    {{ $settings->currency }}{{ $planSelected->increment_amount }} {{ $planSelected->increment_interval }}
+                                    {{ Auth::user()->currency_symbol }}{{ $planSelected->increment_amount }} {{ $planSelected->increment_interval }}
                                 @else
                                     {{ $planSelected->increment_amount }}% {{ $planSelected->increment_interval }}
                                 @endif
@@ -49,10 +49,10 @@
                         </div>
                         <div class="flex flex-wrap gap-2">
                             <div class="rounded-lg px-3 py-1.5 bg-primary/10 text-primary text-xs font-medium">
-                                Min: {{ $settings->currency }}{{ number_format($planSelected->min_price) }}
+                                Min: {{ Auth::user()->currency_symbol }}{{ number_format($planSelected->min_price) }}
                             </div>
                             <div class="rounded-lg px-3 py-1.5 bg-primary/10 text-primary text-xs font-medium">
-                                Max: {{ $settings->currency }}{{ number_format($planSelected->max_price) }}
+                                Max: {{ Auth::user()->currency_symbol }}{{ number_format($planSelected->max_price) }}
                             </div>
                             <div class="rounded-lg px-3 py-1.5 bg-green-500/10 text-green-500 text-xs font-medium">
                                 {{ $planSelected->minr }}% - {{ $planSelected->maxr }}% ROI
@@ -79,7 +79,7 @@
                                 <p class="text-xs dark:text-gray-400 text-gray-500">Return Rate</p>
                                 <p class="text-sm font-medium dark:text-white text-dark">
                                     @if ($planSelected->increment_type == 'Fixed')
-                                        {{ $settings->currency }}{{ $planSelected->increment_amount }} {{ $planSelected->increment_interval }}
+                                        {{ Auth::user()->currency_symbol }}{{ $planSelected->increment_amount }} {{ $planSelected->increment_interval }}
                                     @else
                                         {{ $planSelected->increment_amount }}% {{ $planSelected->increment_interval }}
                                     @endif
@@ -92,7 +92,7 @@
                             </div>
                             <div>
                                 <p class="text-xs dark:text-gray-400 text-gray-500">Bonus</p>
-                                <p class="text-sm font-medium dark:text-white text-dark">{{ $settings->currency }}{{ $planSelected->gift }}</p>
+                                <p class="text-sm font-medium dark:text-white text-dark">{{ Auth::user()->currency_symbol }}{{ $planSelected->gift }}</p>
                             </div>
                         </div>
                     </div>
@@ -113,22 +113,22 @@
                         <div class="grid grid-cols-3 gap-2">
                             <button class="py-3 rounded-xl text-center transition-all duration-200 hover:scale-105 hover:shadow-md dark:text-white text-dark
                                         border border-light-200/50 dark:border-dark-200/50 hover:border-primary dark:hover:border-primary"
-                                wire:click="selectAmount('100')">{{ $settings->currency }}100</button>
+                                wire:click="selectAmount('100')">{{ Auth::user()->currency_symbol }}100</button>
                             <button class="py-3 rounded-xl text-center transition-all duration-200 hover:scale-105 hover:shadow-md dark:text-white text-dark
                                         border border-light-200/50 dark:border-dark-200/50 hover:border-primary dark:hover:border-primary"
-                                wire:click="selectAmount('250')">{{ $settings->currency }}250</button>
+                                wire:click="selectAmount('250')">{{ Auth::user()->currency_symbol }}250</button>
                             <button class="py-3 rounded-xl text-center transition-all duration-200 hover:scale-105 hover:shadow-md dark:text-white text-dark
                                         border border-light-200/50 dark:border-dark-200/50 hover:border-primary dark:hover:border-primary"
-                                wire:click="selectAmount('500')">{{ $settings->currency }}500</button>
+                                wire:click="selectAmount('500')">{{ Auth::user()->currency_symbol }}500</button>
                             <button class="py-3 rounded-xl text-center transition-all duration-200 hover:scale-105 hover:shadow-md dark:text-white text-dark
                                         border border-light-200/50 dark:border-dark-200/50 hover:border-primary dark:hover:border-primary"
-                                wire:click="selectAmount('1000')">{{ $settings->currency }}1K</button>
+                                wire:click="selectAmount('1000')">{{ Auth::user()->currency_symbol }}1K</button>
                             <button class="py-3 rounded-xl text-center transition-all duration-200 hover:scale-105 hover:shadow-md dark:text-white text-dark
                                         border border-light-200/50 dark:border-dark-200/50 hover:border-primary dark:hover:border-primary"
-                                wire:click="selectAmount('2000')">{{ $settings->currency }}2K</button>
+                                wire:click="selectAmount('2000')">{{ Auth::user()->currency_symbol }}2K</button>
                             <button class="py-3 rounded-xl text-center transition-all duration-200 hover:scale-105 hover:shadow-md dark:text-white text-dark
                                         border border-light-200/50 dark:border-dark-200/50 hover:border-primary dark:hover:border-primary"
-                                wire:click="selectAmount('5000')">{{ $settings->currency }}5K</button>
+                                wire:click="selectAmount('5000')">{{ Auth::user()->currency_symbol }}5K</button>
                         </div>
                     </div>
 
@@ -139,7 +139,7 @@
                         </p>
                         <div class="relative">
                             <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                                <span class="text-gray-500 dark:text-gray-400 text-lg font-medium">{{ $settings->currency }}</span>
+                                <span class="text-gray-500 dark:text-gray-400 text-lg font-medium">{{ Auth::user()->currency_symbol }}</span>
                             </div>
                             <input
                                 type="number"
@@ -157,8 +157,8 @@
                         @if ($planSelected && $planSelected->min_price < $planSelected->max_price)
                         <div class="mt-3">
                             <div class="flex justify-between text-xs text-gray-500 dark:text-gray-400 mb-1">
-                                <span>{{ $settings->currency }}{{ number_format($planSelected->min_price) }}</span>
-                                <span>{{ $settings->currency }}{{ number_format($planSelected->max_price) }}</span>
+                                <span>{{ Auth::user()->currency_symbol }}{{ number_format($planSelected->min_price) }}</span>
+                                <span>{{ Auth::user()->currency_symbol }}{{ number_format($planSelected->max_price) }}</span>
                             </div>
                             <div class="w-full h-1 bg-gray-200 dark:bg-dark-200 rounded-full overflow-hidden">
                                 @if ($amountToInvest > 0 && $planSelected->max_price > 0)
@@ -202,23 +202,23 @@
 
                             <div class="flex justify-between items-center text-sm">
                                 <span class="dark:text-gray-400 text-gray-600">Initial Investment:</span>
-                                <span class="font-medium dark:text-white text-dark">{{ $settings->currency }}{{ number_format($amountToInvest, 2) }}</span>
+                                <span class="font-medium dark:text-white text-dark">{{ Auth::user()->currency_symbol }}{{ number_format($amountToInvest, 2) }}</span>
                             </div>
 
                             <div class="flex justify-between items-center text-sm">
                                 <span class="dark:text-gray-400 text-gray-600">Est. Return ({{ $avgReturnPercentage }}%):</span>
-                                <span class="font-medium text-green-500">+{{ $settings->currency }}{{ number_format($totalReturn, 2) }}</span>
+                                <span class="font-medium text-green-500">+{{ Auth::user()->currency_symbol }}{{ number_format($totalReturn, 2) }}</span>
                             </div>
 
                             <div class="flex justify-between items-center text-sm">
                                 <span class="dark:text-gray-400 text-gray-600">Bonus:</span>
-                                <span class="font-medium text-green-500">+{{ $settings->currency }}{{ number_format($planSelected->gift, 2) }}</span>
+                                <span class="font-medium text-green-500">+{{ Auth::user()->currency_symbol }}{{ number_format($planSelected->gift, 2) }}</span>
                             </div>
 
                             <div class="mt-3 pt-3 border-t border-light-200/50 dark:border-dark-200/50">
                                 <div class="flex justify-between items-center">
                                     <span class="font-medium dark:text-white text-dark">Total Value:</span>
-                                    <span class="font-bold text-lg text-primary">{{ $settings->currency }}{{ number_format($finalAmount, 2) }}</span>
+                                    <span class="font-bold text-lg text-primary">{{ Auth::user()->currency_symbol }}{{ number_format($finalAmount, 2) }}</span>
                                 </div>
                                 <div class="text-xs text-center dark:text-gray-400 text-gray-600 mt-1">
                                     After {{ $duration }} {{ $durationUnit }}
@@ -250,7 +250,7 @@
                                     <div>
                                         <p class="font-medium dark:text-white text-dark">Account Balance</p>
                                         <p class="text-sm dark:text-gray-400 text-gray-600">
-                                            {{ $settings->currency }}{{ number_format(Auth::user()->account_bal, 2) }} available
+                                            {{ Auth::user()->currency_symbol }}{{ number_format(Auth::user()->account_bal, 2) }} available
                                         </p>
                                     </div>
                                     @if ($paymentMethod == 'Account Balance')
@@ -327,7 +327,7 @@
                                 </div>
                                 <div class="flex justify-between items-center">
                                     <span class="text-sm dark:text-gray-400 text-gray-600">Investment Amount:</span>
-                                    <span class="text-sm font-medium dark:text-white text-dark">{{ $settings->currency }}{{ $amountToInvest ? number_format($amountToInvest, 2) : '0.00' }}</span>
+                                    <span class="text-sm font-medium dark:text-white text-dark">{{ Auth::user()->currency_symbol }}{{ $amountToInvest ? number_format($amountToInvest, 2) : '0.00' }}</span>
                                 </div>
                                 <div class="flex justify-between items-center">
                                     <span class="text-sm dark:text-gray-400 text-gray-600">Payment Method:</span>

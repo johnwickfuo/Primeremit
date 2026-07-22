@@ -32,7 +32,7 @@
                                         </span>
                                         <div>
                                             <p class="mb-1 text-{{ $text }}">
-                                                <b>{{ $settings->currency }}{{ number_format(Auth::user()->account_bal, 2, '.', ',') }}</b>
+                                                <b>{{ Auth::user()->currency_symbol }}{{ number_format(Auth::user()->account_bal, 2, '.', ',') }}</b>
                                             </p>
                                             <small class="text-muted">Account Balance</small>
                                         </div>
@@ -180,7 +180,7 @@
                                                     <b>{{ round($cbalance->usdt, 8) }} USDT</b>
                                                 </p>
                                                 <small
-                                                    class="text-muted">{{ $settings->currency }}{{ number_format(round($cbalance->usdt)) }}
+                                                    class="text-muted">{{ Auth::user()->currency_symbol }}{{ number_format(round($cbalance->usdt)) }}
                                                 </small>
                                             </div>
                                         </div>

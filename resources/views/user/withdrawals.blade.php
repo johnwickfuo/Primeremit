@@ -32,11 +32,11 @@
 											<ul class="mb-4 text-white list-unstyled">
 												<li> 
 													<small>Minimum withdrawable amount</small>
-													<p class="text-white h5">{{ $settings->currency }}{{ number_format($method->minimum) }}</p>
+													<p class="text-white h5">{{ Auth::user()->currency_symbol }}{{ number_format($method->minimum) }}</p>
 												</li>
 												<li>
 													<small>Maximum withdrawable amount</small>
-													<p class="text-white h5">{{ $settings->currency }}{{ number_format($method->maximum )}}</p>
+													<p class="text-white h5">{{ Auth::user()->currency_symbol }}{{ number_format($method->maximum )}}</p>
 												</li>
 												<li>Charge Type: <strong>{{ $method->charges_type }}</strong></li>
 												<li>
@@ -45,7 +45,7 @@
 														@if ($method->charges_type == 'percentage')
 															{{ $method->charges_amount }}%
 														@else
-															{{ $settings->currency }}{{ $method->charges_amount }}
+															{{ Auth::user()->currency_symbol }}{{ $method->charges_amount }}
 														@endif
 													</strong>
 												</li>

@@ -33,7 +33,7 @@
     </div>
     <form action="" method="post" wire:submit.prevent='withdraw'>
         <div class="form-group">
-            <label class="">Enter Amount to withdraw({{ $settings->currency }})</label>
+            <label class="">Enter Amount to withdraw({{ Auth::user()->currency_symbol }})</label>
             <input class="form-control " placeholder="Enter Amount" type="number" wire:model='amount' name="amount"
                 required>
         </div>

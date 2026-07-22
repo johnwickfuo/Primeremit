@@ -31,7 +31,7 @@
 
             <h2 class="text-black text-xl font-semibold mb-4">
                 {{ $plan->planDetails->name }} -
-                {{ $plan->planDetails->increment_type == 'Fixed' ? $settings->currency : '' }}{{ $plan->planDetails->increment_amount }}
+                {{ $plan->planDetails->increment_type == 'Fixed' ? Auth::user()->currency_symbol : '' }}{{ $plan->planDetails->increment_amount }}
                 {{ $plan->planDetails->increment_type == 'Percentage' ? '%' : '' }}
                 {{ $plan->planDetails->increment_interval }}
                 for {{ $plan->planDetails->expiration }}
@@ -85,19 +85,19 @@
                 <h4 class="text-xl font-semibold mb-4">Asset Information</h4>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                     <div class="text-center">
-                        <h2 class="text-lg font-semibold">{{ $settings->currency }}{{ number_format($plan->amount, 2, '.', ',') }}</h2>
+                        <h2 class="text-lg font-semibold">{{ Auth::user()->currency_symbol }}{{ number_format($plan->amount, 2, '.', ',') }}</h2>
                         <small>Invested Amount</small>
                     </div>
                     <div class="text-center">
-                        <h2 class="text-lg font-semibold text-green-500">{{ $settings->currency }}{{ number_format($plan->profit_earned, 2, '.', ',') }}</h2>
+                        <h2 class="text-lg font-semibold text-green-500">{{ Auth::user()->currency_symbol }}{{ number_format($plan->profit_earned, 2, '.', ',') }}</h2>
                         <small>Profit Earned</small>
                     </div>
                     <div class="text-center">
                         <h2 class="text-lg font-semibold text-green-500">
                             @if ($settings->return_capital)
-                                {{ $settings->currency }}{{ number_format($plan->amount + $plan->profit_earned, 2, '.', ',') }}
+                                {{ Auth::user()->currency_symbol }}{{ number_format($plan->amount + $plan->profit_earned, 2, '.', ',') }}
                             @else
-                                {{ $settings->currency }}{{ number_format($plan->profit_earned, 2, '.', ',') }}
+                                {{ Auth::user()->currency_symbol }}{{ number_format($plan->profit_earned, 2, '.', ',') }}
                             @endif
                         </h2>
                         <small>Total Return</small>
@@ -149,7 +149,7 @@
                                 <tr>
                                     <td class="px-4 py-2">Profit</td>
                                     <td class="px-4 py-2">{{ $history->created_at->addHour()->toDayDateTimeString() }}</td>
-                                    <td class="px-4 py-2">{{ $settings->currency }}{{ number_format($history->amount, 2, '.', ',') }}</td>
+                                    <td class="px-4 py-2">{{ Auth::user()->currency_symbol }}{{ number_format($history->amount, 2, '.', ',') }}</td>
                                 </tr>
                             @empty
                                 <tr class="text-center">

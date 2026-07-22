@@ -31,7 +31,7 @@
                                                     width="25">
                                                 <div>
                                                     <h5 class="mb-1 d-inlne">
-                                                        <b>{{ $settings->currency }}{{ number_format(Auth::user()->account_bal, 2, '.', ',') }}</b>
+                                                        <b>{{ Auth::user()->currency_symbol }}{{ number_format(Auth::user()->account_bal, 2, '.', ',') }}</b>
                                                     </h5>
                                                     <small class="text-muted">Your Account Balance</small>
                                                 </div>
@@ -47,7 +47,7 @@
                                                 <input type="text" name="email" class="form-control " required>
                                             </div>
                                             <div class="form-group">
-                                                <label for="" class="">Amount({{ $settings->currency }}) <span
+                                                <label for="" class="">Amount({{ Auth::user()->currency_symbol }}) <span
                                                         class=" text-danger">*</span></label>
                                                 <input type="number" min="{{ $moresettings->min_transfer }}" name="amount"
                                                     placeholder="Enter amount you want to transfer to recipient"

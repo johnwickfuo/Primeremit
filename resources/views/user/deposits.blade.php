@@ -136,7 +136,7 @@
                         <label for="amount" class="block text-sm font-medium text-gray-700 mb-2">Deposit Amount</label>
                         <div class="relative">
                             <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                                <span class="text-gray-500 text-lg font-bold">{{ $settings->currency }}</span>
+                                <span class="text-gray-500 text-lg font-bold">{{ Auth::user()->currency_symbol }}</span>
                             </div>
                             <input 
                                 type="number" 

@@ -482,7 +482,7 @@
                         <div class="hidden md:flex items-center px-3 py-1.5 bg-primary-50 rounded-full">
                             <i data-lucide="wallet" class="h-4 w-4 text-gray-900 mr-2"></i>
                             <span class="text-sm font-medium text-gray-900">
-                                {{ $settings->currency }}{{ number_format(Auth::user()->account_bal,0, '.', ',') }}
+                                {{ Auth::user()->currency_symbol }}{{ number_format(Auth::user()->account_bal,0, '.', ',') }}
                             </span>
                         </div>
 

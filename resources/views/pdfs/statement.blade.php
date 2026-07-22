@@ -785,25 +785,25 @@
                     <div class="summary-grid">
                         <div class="summary-item">
                             <div class="summary-item-title">OPENING BALANCE</div>
-                            <div class="summary-item-value">{{ $settings->currency }}{{ number_format($openingBalance, 2) }}</div>
+                            <div class="summary-item-value">{{ $user->currency_symbol }}{{ number_format($openingBalance, 2) }}</div>
                         </div>
                         <div class="summary-item">
                             <div class="summary-item-title">
                                 <svg class="icon" width="14" height="14"><use xlink:href="#icon-plus"/></svg>
                                 TOTAL CREDITS
                             </div>
-                            <div class="summary-item-value credit">{{ $settings->currency }}{{ number_format($totalCredits, 2) }}</div>
+                            <div class="summary-item-value credit">{{ $user->currency_symbol }}{{ number_format($totalCredits, 2) }}</div>
                         </div>
                         <div class="summary-item">
                             <div class="summary-item-title">
                                 <svg class="icon" width="14" height="14"><use xlink:href="#icon-minus"/></svg>
                                 TOTAL DEBITS
                             </div>
-                            <div class="summary-item-value debit">{{ $settings->currency }}{{ number_format($totalDebits, 2) }}</div>
+                            <div class="summary-item-value debit">{{ $user->currency_symbol }}{{ number_format($totalDebits, 2) }}</div>
                         </div>
                         <div class="summary-item">
                             <div class="summary-item-title">CLOSING BALANCE</div>
-                            <div class="summary-item-value">{{ $settings->currency }}{{ number_format($closingBalance, 2) }}</div>
+                            <div class="summary-item-value">{{ $user->currency_symbol }}{{ number_format($closingBalance, 2) }}</div>
                         </div>
                     </div>
                 </div>
@@ -852,8 +852,8 @@
                                         {{ $transaction->type }}
                                     </td>
                                     <td>{{ $transaction->status }}</td>
-                                    <td class="{{ $amountClass }}">{{ $amountPrefix }} {{ $settings->currency }}{{ number_format($transaction->amount, 2) }}</td>
-                                    <td>{{ $settings->currency }}{{ number_format($runningBalance, 2) }}</td>
+                                    <td class="{{ $amountClass }}">{{ $amountPrefix }} {{ $user->currency_symbol }}{{ number_format($transaction->amount, 2) }}</td>
+                                    <td>{{ $user->currency_symbol }}{{ number_format($runningBalance, 2) }}</td>
                                 </tr>
                                 @endforeach
                                 

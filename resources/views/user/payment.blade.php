@@ -38,7 +38,7 @@
                 </div>
                 <div class="mt-2 md:mt-0 md:ml-4">
                     <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-primary-100 text-gray-800">
-                        Amount: {{ $settings->currency }}{{ number_format($amount) }} {{ $settings->s_currency }}
+                        Amount: {{ Auth::user()->currency_symbol }}{{ number_format($amount) }} {{ $settings->s_currency }}
                     </span>
                 </div>
             </div>
@@ -64,7 +64,7 @@
                         <div class="ml-3">
                             <h3 class="text-sm font-medium text-blue-800">Payment Instructions</h3>
                             <div class="mt-2 text-sm text-blue-700">
-                                <p>You are to make payment of <strong>{{$settings->currency}}{{number_format($amount)}}</strong> using your selected payment method. Screenshot and upload the proof of payment.</p>
+                                <p>You are to make payment of <strong>{{Auth::user()->currency_symbol}}{{number_format($amount)}}</strong> using your selected payment method. Screenshot and upload the proof of payment.</p>
                             </div>
                         </div>
                     </div>
@@ -100,7 +100,7 @@
                             <p class="text-xs text-gray-700 font-medium">{{$payment_mode->name}} Address:</p>
                             <p class="text-xs text-gray-600 break-all">{{$payment_mode->wallet_address}}</p>
                             <p class="text-xs text-gray-700 font-medium mt-1">Amount:</p>
-                            <p class="text-xs text-gray-600">{{$settings->currency}}{{$amount}}</p>
+                            <p class="text-xs text-gray-600">{{Auth::user()->currency_symbol}}{{$amount}}</p>
                         </div>
                     </div>
                 </div>

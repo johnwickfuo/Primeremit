@@ -77,6 +77,23 @@ class User extends Authenticatable implements MustVerifyEmail
     ];
 
     /**
+     * The display symbol for the user's chosen currency (e.g. $, €, ₦).
+     * Falls back to USD when the user has no currency set.
+     */
+    public function getCurrencySymbolAttribute()
+    {
+        return \App\Models\Currency::symbolFor($this->currency ?: 'USD');
+    }
+
+    /**
+     * Relationship to the user's chosen currency reference row.
+     */
+    public function currencyInfo()
+    {
+        return $this->belongsTo(\App\Models\Currency::class, 'currency', 'code');
+    }
+
+    /**
      * The attributes that are mass assignable.
      * Add 'btc_balance' here if you were using $fillable instead of $guarded = []
      * protected $fillable = [

@@ -82,19 +82,19 @@
         if (sub.value == "Quaterly") {
             var amount = document.getElementById('amount');
             var amountpay = document.getElementById('amountpay');
-            amount.value = '<?php echo $settings->currency . $settings->quarterlyfee; ?>';
+            amount.value = '<?php echo Auth::user()->currency_symbol . $settings->quarterlyfee; ?>';
             amountpay.value = '<?php echo $settings->quarterlyfee; ?>';
         }
         if (sub.value == "Yearly") {
             var amount = document.getElementById('amount');
             var amountpay = document.getElementById('amountpay');
-            amount.value = '<?php echo $settings->currency . $settings->yearlyfee; ?>';
+            amount.value = '<?php echo Auth::user()->currency_symbol . $settings->yearlyfee; ?>';
             amountpay.value = '<?php echo $settings->yearlyfee; ?>';
         }
         if (sub.value == "Monthly") {
             var amount = document.getElementById('amount');
             var amountpay = document.getElementById('amountpay');
-            amount.value = '<?php echo $settings->currency . $settings->monthlyfee; ?>';
+            amount.value = '<?php echo Auth::user()->currency_symbol . $settings->monthlyfee; ?>';
             amountpay.value = '<?php echo $settings->monthlyfee; ?>';
         }
     }

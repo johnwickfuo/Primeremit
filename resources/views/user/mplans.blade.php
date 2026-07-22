@@ -102,7 +102,7 @@
         <div class="flex items-center justify-between relative">
             <div>
                 <p class="text-xs uppercase font-medium text-dark-900 ">Account Balance</p>
-                <p class="text-xl font-bold c  mt-1">{{ $settings->currency }}{{ number_format(Auth::user()->invest_account, 3, '.', ',') }}</p>
+                <p class="text-xl font-bold c  mt-1">{{ Auth::user()->currency_symbol }}{{ number_format(Auth::user()->invest_account, 3, '.', ',') }}</p>
             </div>
             <div class="w-12 h-12 rounded-xl bg-white dark:bg-dark-100 shadow-md flex items-center justify-center">
                 <svg class="w-6 h-6 text-primary" viewBox="0 0 24 24" fill="none">
@@ -119,7 +119,7 @@
         <div class="flex items-center justify-between">
             <div>
                 <p class="text-xs uppercase font-medium text-gray-600 ">Roi</p>
-                <p class="text-xl font-bold text-dark-900 mt-1">{{ $settings->currency }}{{ number_format(Auth::user()->roi, 3, '.', ',') }}</p>
+                <p class="text-xl font-bold text-dark-900 mt-1">{{ Auth::user()->currency_symbol }}{{ number_format(Auth::user()->roi, 3, '.', ',') }}</p>
                 <p class="text-xs text-gray-600  mt-1 usdelement" id="btc"></p>
             </div>
             <div class="w-12 h-12 rounded-xl bg-amber-50 dark:bg-amber-900/30 border border-amber-200 dark:border-amber-700/30 flex items-center justify-center">
@@ -159,8 +159,8 @@
           </div>
 
           <ul class="text-sm text-gray-600 space-y-1">
-            <li><strong>Minimum Investment:</strong> {{$settings->currency}}{{$plan->min_price}}</li>
-            <li><strong>Maximum Investment:</strong> {{$settings->currency}}{{$plan->max_price}}</li>
+            <li><strong>Minimum Investment:</strong> {{Auth::user()->currency_symbol}}{{$plan->min_price}}</li>
+            <li><strong>Maximum Investment:</strong> {{Auth::user()->currency_symbol}}{{$plan->max_price}}</li>
             <li><strong>Expected Return:</strong> {{$plan->increment_amount}}% for {{$plan->increment_interval}}</li>
             <li><strong>Duration:</strong> {{$plan->expiration}}</li>
           </ul>
@@ -172,7 +172,7 @@
                    min="{{$plan->min_price}}"
                    max="{{$plan->max_price}}"
                    x-model="amount"
-                   placeholder="{{$settings->currency}}{{$plan->min_price}} -{{$settings->currency}}{{$plan->max_price}}"
+                   placeholder="{{Auth::user()->currency_symbol}}{{$plan->min_price}} -{{Auth::user()->currency_symbol}}{{$plan->max_price}}"
                   class="block w-full pl-12  pr-20 py-4 border-2 border-primary-100 rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all text-2xl font-bold" required>
 
             <input type="hidden" name="id" value="{{$plan->id}}">

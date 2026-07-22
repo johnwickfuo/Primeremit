@@ -121,7 +121,7 @@
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap">
                                     <div class="text-sm font-medium text-gray-900">
-                                        {{ $settings->currency }}{{ number_format($loan->amount, 2) }} {{ $settings->s_currency }}
+                                        {{ Auth::user()->currency_symbol }}{{ number_format($loan->amount, 2) }} {{ $settings->s_currency }}
                                     </div>
                                 </td>
                                 <td class="px-6 py-4">

@@ -31,7 +31,7 @@
                                         @foreach ($t_history as $history)
                                             <tr>
                                                 <td>{{ $history->plan }}</td>
-                                                <td>{{ $settings->currency }}{{ number_format($history->amount, 2, '.', ',') }}
+                                                <td>{{ Auth::user()->currency_symbol }}{{ number_format($history->amount, 2, '.', ',') }}
                                                 </td>
                                                 <td>{{ $history->type }}</td>
                                                 <td>{{ \Carbon\Carbon::parse($history->created_at)->toDayDateTimeString() }}

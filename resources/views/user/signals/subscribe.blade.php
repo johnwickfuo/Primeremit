@@ -49,7 +49,7 @@
                                     <div class="d-flex justify-content-between">
                                         <div>
                                             <h3 class=" h5">{{ $subscription->subscription }} Subscription</h3>
-                                            <h3 class="text-primary">{{ $settings->currency . $subscription->amount_paid }}
+                                            <h3 class="text-primary">{{ Auth::user()->currency_symbol . $subscription->amount_paid }}
                                             </h3>
                                         </div>
                                         <div>
@@ -65,11 +65,11 @@
                                                         data-bs-toggle="modal" data-bs-target="#exampleModal">
                                                         Pay
                                                         @if ($subscription->subscription == 'Monthly')
-                                                            {{ $settings->currency . $set->signal_monthly_fee }}
+                                                            {{ Auth::user()->currency_symbol . $set->signal_monthly_fee }}
                                                         @elseif ($subscription->subscription == 'Quarterly')
-                                                            {{ $settings->currency . $set->signal_monthly_fee }}
+                                                            {{ Auth::user()->currency_symbol . $set->signal_monthly_fee }}
                                                         @else
-                                                            {{ $settings->currency . $set->signal_yearly_fee }}
+                                                            {{ Auth::user()->currency_symbol . $set->signal_yearly_fee }}
                                                         @endif
                                                     </button>
 
@@ -86,11 +86,11 @@
                                                                 <div class="modal-body">
                                                                     <h5>
                                                                         @if ($subscription->subscription == 'Monthly')
-                                                                            {{ $settings->currency . $set->signal_monthly_fee }}
+                                                                            {{ Auth::user()->currency_symbol . $set->signal_monthly_fee }}
                                                                         @elseif ($subscription->subscription == 'Quarterly')
-                                                                            {{ $settings->currency . $set->signal_monthly_fee }}
+                                                                            {{ Auth::user()->currency_symbol . $set->signal_monthly_fee }}
                                                                         @else
-                                                                            {{ $settings->currency . $set->signal_yearly_fee }}
+                                                                            {{ Auth::user()->currency_symbol . $set->signal_yearly_fee }}
                                                                         @endif will be deducted from
                                                                         your
                                                                         account balance..

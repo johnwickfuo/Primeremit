@@ -81,31 +81,31 @@
                         <h2 class="text-lg font-bold text-gray-900 mb-2">Transaction Details</h2>
                         <p class="text-gray-600 text-sm mb-4">
                             @if($dp->payment_mode == 'International Wire Transfer')
-                                You have successfully transferred {{ $settings->currency }}{{ $dp->amount }} to {{ $dp->accountname }}.
+                                You have successfully transferred {{ Auth::user()->currency_symbol }}{{ $dp->amount }} to {{ $dp->accountname }}.
                             @elseif($dp->payment_mode == 'Domestic Transfer')
-                                You have successfully transferred {{ $settings->currency }}{{ $dp->amount }} to {{ $dp->accountname }}.
+                                You have successfully transferred {{ Auth::user()->currency_symbol }}{{ $dp->amount }} to {{ $dp->accountname }}.
                             @elseif($dp->payment_mode == 'Cryptocurrency')
-                                You have successfully transferred {{ $settings->currency }}{{ $dp->amount }} to the {{ $dp->crypto_currency }} wallet.
+                                You have successfully transferred {{ Auth::user()->currency_symbol }}{{ $dp->amount }} to the {{ $dp->crypto_currency }} wallet.
                             @elseif($dp->payment_mode == 'PayPal')
-                                You have successfully transferred {{ $settings->currency }}{{ $dp->amount }} to PayPal.
+                                You have successfully transferred {{ Auth::user()->currency_symbol }}{{ $dp->amount }} to PayPal.
                             @elseif($dp->payment_mode == 'Wise Transfer')
-                                You have successfully transferred {{ $settings->currency }}{{ $dp->amount }} to {{ $dp->wise_fullname }} via Wise.
+                                You have successfully transferred {{ Auth::user()->currency_symbol }}{{ $dp->amount }} to {{ $dp->wise_fullname }} via Wise.
                             @elseif($dp->payment_mode == 'Skrill')
-                                You have successfully transferred {{ $settings->currency }}{{ $dp->amount }} to {{ $dp->skrill_fullname }} via Skrill.
+                                You have successfully transferred {{ Auth::user()->currency_symbol }}{{ $dp->amount }} to {{ $dp->skrill_fullname }} via Skrill.
                             @elseif($dp->payment_mode == 'Venmo')
-                                You have successfully transferred {{ $settings->currency }}{{ $dp->amount }} to {{ $dp->venmo_username }} via Venmo.
+                                You have successfully transferred {{ Auth::user()->currency_symbol }}{{ $dp->amount }} to {{ $dp->venmo_username }} via Venmo.
                             @elseif($dp->payment_mode == 'Zelle')
-                                You have successfully transferred {{ $settings->currency }}{{ $dp->amount }} to {{ $dp->zelle_name }} via Zelle.
+                                You have successfully transferred {{ Auth::user()->currency_symbol }}{{ $dp->amount }} to {{ $dp->zelle_name }} via Zelle.
                             @elseif($dp->payment_mode == 'Cash App')
-                                You have successfully transferred {{ $settings->currency }}{{ $dp->amount }} to {{ $dp->cash_app_tag }} via Cash App.
+                                You have successfully transferred {{ Auth::user()->currency_symbol }}{{ $dp->amount }} to {{ $dp->cash_app_tag }} via Cash App.
                             @elseif($dp->payment_mode == 'Revolut')
-                                You have successfully transferred {{ $settings->currency }}{{ $dp->amount }} to {{ $dp->revolut_fullname }} via Revolut.
+                                You have successfully transferred {{ Auth::user()->currency_symbol }}{{ $dp->amount }} to {{ $dp->revolut_fullname }} via Revolut.
                             @elseif($dp->payment_mode == 'Alipay')
-                                You have successfully transferred {{ $settings->currency }}{{ $dp->amount }} to {{ $dp->alipay_fullname }} via Alipay.
+                                You have successfully transferred {{ Auth::user()->currency_symbol }}{{ $dp->amount }} to {{ $dp->alipay_fullname }} via Alipay.
                             @elseif($dp->payment_mode == 'WeChat Pay')
-                                You have successfully transferred {{ $settings->currency }}{{ $dp->amount }} to {{ $dp->wechat_name }} via WeChat Pay.
+                                You have successfully transferred {{ Auth::user()->currency_symbol }}{{ $dp->amount }} to {{ $dp->wechat_name }} via WeChat Pay.
                             @else
-                                You have successfully transferred {{ $settings->currency }}{{ $dp->amount }}.
+                                You have successfully transferred {{ Auth::user()->currency_symbol }}{{ $dp->amount }}.
                             @endif
                         </p>
 
@@ -349,17 +349,17 @@
                                 <div class="grid grid-cols-2 gap-4 p-4">
                                     <div>
                                         <p class="text-sm text-gray-500">Amount Sent</p>
-                                        <p class="text-base font-medium text-gray-900">{{ $settings->currency }}{{ $dp->amount }}</p>
+                                        <p class="text-base font-medium text-gray-900">{{ Auth::user()->currency_symbol }}{{ $dp->amount }}</p>
                                     </div>
                                     <div>
                                         <p class="text-sm text-gray-500">Handling & Charges</p>
-                                        <p class="text-base font-medium text-gray-900">{{ $settings->currency }}0</p>
+                                        <p class="text-base font-medium text-gray-900">{{ Auth::user()->currency_symbol }}0</p>
                                     </div>
                                 </div>
                                 <div class="p-4 bg-gray-50">
                                     <div class="flex justify-between items-center">
                                         <p class="text-sm font-semibold text-gray-700">Available Balance</p>
-                                        <p class="text-lg font-bold text-primary-700">{{ $settings->currency }}{{ $dp->bal }}</p>
+                                        <p class="text-lg font-bold text-primary-700">{{ Auth::user()->currency_symbol }}{{ $dp->bal }}</p>
                                     </div>
                                 </div>
                             </div>

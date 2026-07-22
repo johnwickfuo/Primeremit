@@ -73,7 +73,7 @@
                                 </div>
                                 <div>
                                     <p class="text-sm text-gray-500">Available Balance</p>
-                                    <p class="text-xl font-bold text-gray-900">{{ $settings->currency }}{{ number_format(Auth::user()->account_bal, 2, '.', ',') }}</p>
+                                    <p class="text-xl font-bold text-gray-900">{{ Auth::user()->currency_symbol }}{{ number_format(Auth::user()->account_bal, 2, '.', ',') }}</p>
                                 </div>
                             </div>
                             <div class="hidden sm:block">
@@ -87,7 +87,7 @@
                         <label for="amount" class="block text-sm font-medium text-gray-700 mb-2">Transfer Amount</label>
                         <div class="relative">
                             <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                                <span class="text-gray-500 text-lg font-bold">{{ $settings->currency }}</span>
+                                <span class="text-gray-500 text-lg font-bold">{{ Auth::user()->currency_symbol }}</span>
                             </div>
                             <input 
                                 type="number" 
@@ -283,23 +283,23 @@
                         <div class="space-y-2">
                             <div class="flex justify-between items-center">
                                 <span class="text-gray-500">Amount</span>
-                                <span class="font-medium text-gray-700">{{ $settings->currency }}<span x-text="parseFloat(amount || 0).toFixed(2)"></span></span>
+                                <span class="font-medium text-gray-700">{{ Auth::user()->currency_symbol }}<span x-text="parseFloat(amount || 0).toFixed(2)"></span></span>
                             </div>
                             
                             <div class="flex justify-between items-center">
                                 <span class="text-gray-500">Fee</span>
-                                <span class="font-medium text-gray-700">{{ $settings->currency }}0.00</span>
+                                <span class="font-medium text-gray-700">{{ Auth::user()->currency_symbol }}0.00</span>
                             </div>
                             
                             <div class="border-t border-gray-200 pt-2 mt-2">
                                 <div class="flex justify-between items-center">
                                     <span class="text-gray-700 font-medium">Total</span>
-                                    <span class="font-bold text-xl text-gray-900">{{ $settings->currency }}<span x-text="parseFloat(amount || 0).toFixed(2)"></span></span>
+                                    <span class="font-bold text-xl text-gray-900">{{ Auth::user()->currency_symbol }}<span x-text="parseFloat(amount || 0).toFixed(2)"></span></span>
                                 </div>
                                 
                                 <div class="flex justify-between items-center mt-1">
                                     <span class="text-gray-500">New Balance After Transfer</span>
-                                    <span class="font-medium text-gray-700">{{ $settings->currency }}<span x-text="({{ Auth::user()->account_bal }} - parseFloat(amount || 0)).toFixed(2)"></span></span>
+                                    <span class="font-medium text-gray-700">{{ Auth::user()->currency_symbol }}<span x-text="({{ Auth::user()->account_bal }} - parseFloat(amount || 0)).toFixed(2)"></span></span>
                                 </div>
                             </div>
                         </div>
@@ -404,7 +404,7 @@
                         <div class="space-y-3 text-sm">
                             <div class="flex justify-between">
                                 <span class="text-gray-500">Amount</span>
-                                <span class="font-medium text-gray-900">{{ $settings->currency }}<span x-text="parseFloat(amount).toFixed(2)"></span></span>
+                                <span class="font-medium text-gray-900">{{ Auth::user()->currency_symbol }}<span x-text="parseFloat(amount).toFixed(2)"></span></span>
                             </div>
                             
                             <div class="flex justify-between">
@@ -435,12 +435,12 @@
                             <div class="border-t border-gray-200 pt-2 mt-2">
                                 <div class="flex justify-between">
                                     <span class="text-gray-700 font-medium">Total</span>
-                                    <span class="font-bold text-gray-900">{{ $settings->currency }}<span x-text="parseFloat(amount).toFixed(2)"></span></span>
+                                    <span class="font-bold text-gray-900">{{ Auth::user()->currency_symbol }}<span x-text="parseFloat(amount).toFixed(2)"></span></span>
                                 </div>
                                 
                                 <div class="flex justify-between mt-1">
                                     <span class="text-gray-500">New Balance After Transfer</span>
-                                    <span class="font-medium text-gray-900">{{ $settings->currency }}<span x-text="({{ Auth::user()->account_bal }} - parseFloat(amount)).toFixed(2)"></span></span>
+                                    <span class="font-medium text-gray-900">{{ Auth::user()->currency_symbol }}<span x-text="({{ Auth::user()->account_bal }} - parseFloat(amount)).toFixed(2)"></span></span>
                                 </div>
                             </div>
                         </div>

@@ -29,7 +29,7 @@
     </div> --}}
     <div class="bg-white p-4 rounded-xl shadow-sm">
       <p class="text-gray-500">Portfolio Value</p>
-      <p class="text-xl font-bold">{{$settings->currency}}{{number_format($portfolio,2,'.')}}</p>
+      <p class="text-xl font-bold">{{Auth::user()->currency_symbol}}{{number_format($portfolio,2,'.')}}</p>
     </div>
 </div>
 
@@ -67,7 +67,7 @@
           @else Active @endif
         </p>
         <h4 class="font-semibold text-lg">{{ $plan->planDetails->name }}</h4>
-        <p class="text-sm text-gray-600">Amount: {{$settings->currency}}{{ number_format($plan->amount, 2) }}</p>
+        <p class="text-sm text-gray-600">Amount: {{Auth::user()->currency_symbol}}{{ number_format($plan->amount, 2) }}</p>
 
         <a href="{{ route('plandetails', $plan->id) }}" class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500">
             <i class="fas fa-chevron-right fa-2x"></i>View details </a>

@@ -53,7 +53,7 @@
                                     <form action="{{route('completewithdrawal')}}" method="post">
                                         @csrf
                                         <div class="form-group">
-                                            <label class="">Enter Amount to withdraw({{$settings->currency}})</label>
+                                            <label class="">Enter Amount to withdraw({{Auth::user()->currency_symbol}})</label>
                                             <input class="form-control " placeholder="Enter Amount" type="number" name="amount" required>
                                         </div>
                                         <input value="{{$payment_mode}}"  type="hidden" name="method">
