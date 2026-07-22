@@ -19,7 +19,7 @@ class CreateKycsTable extends Migration
             $table->foreignIdFor(User::class);
             $table->string('first_name')->nullable();
             $table->string('last_name')->nullable();
-            $table->string('email')->nullable()->unique();
+            $table->string('email')->nullable();
             $table->string('phone_number')->nullable();
             $table->string('dob')->nullable();
             $table->string('social_media')->nullable();
