@@ -31,7 +31,7 @@ if (Auth('admin')->User()->dashboard_style == 'light') {
                             <!-- Common fields for all payment methods -->
                             <div class="mb-3 form-group">
                                 <h5 class="">Amount</h5>
-                                <input type="text" class="form-control readonly" value="{{ $settings->currency }}{{ $withdrawal->amount }}" readonly>
+                                <input type="text" class="form-control readonly" value="{{ optional($withdrawal->duser)->currency_symbol ?? $settings->currency }}{{ $withdrawal->amount }}" readonly>
                             </div>
                             
                             <div class="mb-3 form-group">
