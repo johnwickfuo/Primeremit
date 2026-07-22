@@ -331,7 +331,7 @@
                                         <i data-lucide="check-circle" class="h-3 w-3 mr-1"></i> KYC Verified
                                     </span>
                                 </div>
-                            @elseif(Auth::user()->account_verify == 'Under Review')
+                            @elseif(Auth::user()->account_verify == 'Under review')
                                 <div class="flex items-center justify-center py-1 rounded-md bg-yellow-50 border border-yellow-100">
                                     <span class="text-xs text-yellow-800 font-medium flex items-center">
                                         <i data-lucide="clock" class="h-3 w-3 mr-1"></i> KYC Under Review
@@ -617,7 +617,7 @@
                                                 <i data-lucide="check-circle" class="h-3 w-3 mr-1"></i> Verified
                                             </span>
                                         </div>
-                                    @elseif(Auth::user()->account_verify == 'Under Review')
+                                    @elseif(Auth::user()->account_verify == 'Under review')
                                         <div class="mt-2 flex items-center">
                                             <span class="px-2 py-1 text-xs rounded-full bg-yellow-100 text-yellow-800 flex items-center">
                                                 <i data-lucide="clock" class="h-3 w-3 mr-1"></i> Under Review

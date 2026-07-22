@@ -34,8 +34,8 @@
         <div class="p-6">
             <div class="max-w-8xl mx-auto">
                 <!-- Welcome Message -->
-                @if (Auth::user()->account_verify == 'Verified' or Auth::user()->account_verify == 'Under Review')
-                    @if (Auth::user()->account_verify == 'Under Review')
+                @if (Auth::user()->account_verify == 'Verified' or Auth::user()->account_verify == 'Under review')
+                    @if (Auth::user()->account_verify == 'Under review')
                         <div class="bg-yellow-50 border-l-4 border-yellow-400 p-6 rounded-lg mb-6">
                             <div class="flex items-start">
                                 <div class="flex-shrink-0">

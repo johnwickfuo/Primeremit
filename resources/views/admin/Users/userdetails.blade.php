@@ -159,10 +159,14 @@ if (Auth('admin')->User()->dashboard_style == 'light') {
                                     </div>
                                     <div class="col-md-3">
                                         <h5>KYC</h5>
-                                        @if ($user->account_verify == 'Not Verified' || $user->account_verify == null)
-                                            <span class="badge badge-danger">Not Verified Yet</span>
-                                        @else
+                                        @if ($user->account_verify == 'Verified')
                                             <span class="badge badge-success">Verified</span>
+                                        @elseif ($user->account_verify == 'Under review')
+                                            <span class="badge badge-warning">Under Review</span>
+                                        @elseif ($user->account_verify == 'Rejected')
+                                            <span class="badge badge-danger">Rejected</span>
+                                        @else
+                                            <span class="badge badge-danger">Not Verified Yet</span>
                                         @endif
                                     </div>
                                     
